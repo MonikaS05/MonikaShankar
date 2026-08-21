@@ -1,0 +1,132 @@
+@import url('https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Poppins:wght@300;400;500;600;700&family=Quicksand:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap');
+
+@import "tailwindcss";
+
+@theme {
+  --color-cozy-cream: #FAF6F0;
+  --color-cozy-lavender: #E8DFF5;
+  --color-cozy-pink: #FCE1E4;
+  --color-cozy-accent: #8E7AB5;
+  --color-cozy-accent-light: #B799FF;
+  --color-cozy-dark: #3B1F50;
+  --color-cozy-text: #2D2736;
+  --color-cozy-gray: #70637A;
+  --color-cozy-green: #5C8A62;
+  --color-cozy-yellow: #F6C875;
+  --color-cozy-clay: #DEB89C;
+  --color-cozy-paper: #FCFAF6;
+  --color-cozy-notebook-ring: #BDB2A2;
+
+  --font-sans: "Quicksand", "Poppins", "Inter", sans-serif;
+  --font-serif: "Playfair Display", serif;
+  --font-handwritten: "Architects Daughter", cursive, sans-serif;
+
+  --shadow-cozy-sm: 0 4px 12px rgba(92, 70, 128, 0.06);
+  --shadow-cozy: 0 12px 32px rgba(92, 70, 128, 0.1);
+  --shadow-cozy-lg: 0 20px 48px rgba(92, 70, 128, 0.16);
+  --shadow-handdrawn: 5px 5px 0px 0px #3B1F50;
+  --shadow-neon: 0 0 20px rgba(142, 122, 181, 0.25);
+
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-float-slow: float 8s ease-in-out infinite;
+  --animate-float-fast: float 4s ease-in-out infinite;
+  --animate-spin-slow: spin 16s linear infinite;
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-12px); }
+  }
+}
+
+/* Global resets and element styles */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-image: url('/cloud_bg.jpg');
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: var(--color-cozy-cream);
+  color: var(--color-cozy-text);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+::selection {
+  background-color: var(--color-cozy-lavender);
+  color: var(--color-cozy-dark);
+}
+
+/* Custom scrollbar matching the cozy theme */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: var(--color-cozy-cream);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgba(142, 122, 181, 0.45);
+  border-radius: 9999px;
+  border: 2px solid var(--color-cozy-cream);
+  transition: background-color 0.2s;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--color-cozy-accent);
+}
+
+/* Custom classes for cozy notebook page lines */
+.paper-line {
+  background-image: linear-gradient(#e5dbcc 1px, transparent 1px);
+  background-size: 100% 2.2rem;
+}
+
+.notebook-margin {
+  border-right: 2px solid rgba(239, 68, 68, 0.25);
+}
+
+/* 3D Book folding style */
+.book-perspective {
+  perspective: 1500px;
+}
+
+.book-shadow {
+  box-shadow: 
+    0 1px 1px rgba(0,0,0,0.06), 
+    0 2px 2px rgba(0,0,0,0.06), 
+    0 4px 4px rgba(0,0,0,0.06), 
+    0 8px 8px rgba(0,0,0,0.06),
+    0 16px 16px rgba(0,0,0,0.06),
+    0 25px 35px rgba(0,0,0,0.15);
+}
+
+/* Grid & Dotted background overlays */
+.grid-bg {
+  background-size: 24px 24px;
+  background-image: linear-gradient(to right, rgba(142, 122, 181, 0.05) 1px, transparent 1px),
+                    linear-gradient(to bottom, rgba(142, 122, 181, 0.05) 1px, transparent 1px);
+}
+
+.dots-bg {
+  background-size: 20px 20px;
+  background-image: radial-gradient(circle, rgba(142, 122, 181, 0.08) 1.5px, transparent 1.5px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-delay: -1ms !important;
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+    background-attachment: initial !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0s !important;
+    transition-delay: 0s !important;
+  }
+}
