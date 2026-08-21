@@ -37,6 +37,9 @@ const LinkedinIcon = ({ size = 16, className = "" }) => (
   </svg>
 );
 
+// Replace 'YOUR_FORMSPREE_ID' with your unique Formspree form ID (e.g. 'mqkrwqpy')
+const FORMSPREE_FORM_ID = 'YOUR_FORMSPREE_ID';
+
 export default function Contact() {
   const [formState, setFormState] = useState({
     name: '',
@@ -47,15 +50,40 @@ export default function Contact() {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-    // Simulate API call
-    setTimeout(() => {
+
+    if (FORMSPREE_FORM_ID === 'YOUR_FORMSPREE_ID') {
+      // Fallback: if they haven't set up the ID yet, run a fallback simulation
+      setTimeout(() => {
+        setLoading(false);
+        setIsSubmitted(true);
+        setFormState({ name: '', email: '', subject: '', message: '' });
+      }, 1000);
+      return;
+    }
+
+    try {
+      const response = await fetch(`https://formspree.io/f/${FORMSPREE_FORM_ID}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formState)
+      });
+
+      if (response.ok) {
+        setIsSubmitted(true);
+        setFormState({ name: '', email: '', subject: '', message: '' });
+      } else {
+        alert('Oops! There was a problem submitting your message. Please try again.');
+      }
+    } catch (err) {
+      alert('Network error. Please check your connection and try again.');
+    } finally {
       setLoading(false);
-      setIsSubmitted(true);
-      setFormState({ name: '', email: '', subject: '', message: '' });
-    }, 1500);
+    }
   };
 
   const handleChange = (e) => {
