@@ -38,7 +38,7 @@ const LinkedinIcon = ({ size = 16, className = "" }) => (
 );
 
 // Replace 'YOUR_FORMSPREE_ID' with your unique Formspree form ID (e.g. 'mqkrwqpy')
-const FORMSPREE_FORM_ID = 'YOUR_FORMSPREE_ID';
+const FORMSPREE_FORM_ID = 'xkjwenre';
 
 export default function Contact() {
   const [formState, setFormState] = useState({
